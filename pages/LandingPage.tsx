@@ -11,10 +11,18 @@ const LandingPage: React.FC = () => {
     { label: "Market Dominance", value: "65%", unit: "Share", detail: "Container Rail Lead" }
   ];
 
+  const businessUnits = [
+    { name: "EXIM Division", icon: "🌐", stat: "3.2M TEUs", desc: "International container traffic handling through major ICD nodes and port gateways." },
+    { name: "Domestic Division", icon: "🇮🇳", stat: "1.5M TEUs", desc: "Inland freight orchestration across 60+ terminals serving the domestic supply chain." },
+    { name: "Air Cargo Hubs", icon: "✈️", stat: "High Value", desc: "Temperature-controlled and express transit for sensitive global trade items." },
+    { name: "Coastal & Port", icon: "⚓", stat: "Strategic", desc: "First-mile connectivity to JNPT, Mundra, and Chennai gateway ports." }
+  ];
+
   const leadershipTeam = [
-    { name: "Shri Sanjay Swarup", role: "Chairman & Managing Director", desc: "Visionary leadership driving CONCOR's digital and physical infrastructure expansion." },
-    { name: "Shri Manoj Kumar Dubey", role: "Director (Finance)", desc: "Orchestrating financial strategy and Navratna-grade fiscal discipline." },
-    { name: "Shri Mohammad Azhar Shams", role: "Director (Domestic Division)", desc: "Expanding domestic logistics footprint and first-mile-last-mile connectivity." }
+    { name: "Shri Sanjay Swarup", role: "Chairman & Managing Director", desc: "Leading the transformation of CONCOR into an integrated logistics service provider with a focus on ESG." },
+    { name: "Shri Manoj Kumar Dubey", role: "Director (Finance)", desc: "Expertise in corporate finance, project evaluation, and strategic financial planning for the Navratna PSU." },
+    { name: "Shri Mohammad Azhar Shams", role: "Director (Domestic Division)", desc: "Driving domestic market expansion and cold-chain logistics infrastructure across the national network." },
+    { name: "Ms. Ajit Panda", role: "Director (Projects & Services)", desc: "Overseeing the technical modernization of ICDs and implementation of next-gen ETMS systems." }
   ];
 
   return (
@@ -78,7 +86,7 @@ const LandingPage: React.FC = () => {
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest pb-2">Archive Year: 2023-24</p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-20">
             {performanceMetrics.map((metric, i) => (
               <div key={i} className="group p-8 md:p-10 bg-slate-50 border border-slate-100 rounded-[2rem] md:rounded-[3rem] transition-all hover:bg-white hover:border-[#0096D6] hover:shadow-2xl hover:shadow-blue-500/10">
                 <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-6 group-hover:text-[#0096D6] transition-colors">{metric.label}</p>
@@ -92,16 +100,29 @@ const LandingPage: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-16 md:mt-24 p-8 md:p-16 bg-slate-950 rounded-[3rem] text-white flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {businessUnits.map((unit, i) => (
+              <div key={i} className="p-8 bg-white border border-slate-100 rounded-[2rem] hover:shadow-xl transition-all group">
+                <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:bg-blue-50 transition-colors">
+                  {unit.icon}
+                </div>
+                <h4 className="text-lg font-black text-slate-900 mb-2 tracking-tight">{unit.name}</h4>
+                <p className="text-[10px] font-black text-[#0096D6] uppercase tracking-widest mb-4">{unit.stat}</p>
+                <p className="text-xs text-slate-500 leading-relaxed">{unit.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-20 p-8 md:p-16 bg-slate-950 rounded-[3rem] text-white flex flex-col lg:flex-row items-center justify-between gap-10 relative overflow-hidden">
              <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-500/5 -skew-x-12 translate-x-20 pointer-events-none"></div>
              <div className="max-w-xl relative z-10 text-center lg:text-left">
-                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight">Market Leadership Protocol</h3>
+                <h3 className="text-2xl md:text-3xl font-black mb-4 tracking-tight">Navratna Operational Excellence</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
-                  CONCOR continues to dominate the Indian intermodal space with over 60 strategically located terminals. In FY 2023-24, we witnessed a consistent growth in both physical throughput and digital integration across all nodes.
+                  CONCOR's market leadership is driven by a focus on "Custom-centric" logistics. From automated gate systems to real-time RFID tracking, we are defining the future of multi-modal transit in India.
                 </p>
              </div>
              <Link to="/investors" className="bg-white text-slate-950 px-10 h-16 rounded-2xl font-black uppercase tracking-[0.2em] text-[11px] hover:bg-slate-100 transition-all active:scale-95 whitespace-nowrap relative z-10">
-               Full Financial Audit
+               Investor Telemetry
              </Link>
           </div>
         </div>
@@ -115,25 +136,34 @@ const LandingPage: React.FC = () => {
             <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter">Leadership Protocol</h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid lg:grid-cols-4 gap-8 md:gap-10">
             {leadershipTeam.map((leader, i) => (
               <div key={i} className="group relative">
                 <div className="aspect-[4/5] bg-slate-200 rounded-[3rem] overflow-hidden mb-8 border border-slate-100 shadow-sm relative grayscale group-hover:grayscale-0 transition-all duration-700">
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   {/* Mock Profile Image Placeholder */}
-                  <div className="w-full h-full flex items-center justify-center bg-slate-100">
-                     <span className="text-[10rem] font-black text-slate-200 uppercase tracking-tighter">{leader.name.charAt(leader.name.lastIndexOf(' ') + 1)}</span>
+                  <div className="w-full h-full flex items-center justify-center bg-white">
+                     <span className="text-[10rem] font-black text-slate-100 uppercase tracking-tighter select-none">
+                       {leader.name.split(' ').pop()?.charAt(0)}
+                     </span>
                   </div>
                 </div>
-                <div className="text-center">
-                  <p className="text-[10px] font-black text-[#0096D6] uppercase tracking-[0.3em] mb-2">{leader.role}</p>
-                  <h4 className="text-2xl font-black text-slate-900 tracking-tight mb-4">{leader.name}</h4>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed max-w-xs mx-auto opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0">
+                <div className="text-center px-2">
+                  <p className="text-[9px] font-black text-[#0096D6] uppercase tracking-[0.3em] mb-2">{leader.role}</p>
+                  <h4 className="text-xl font-black text-slate-900 tracking-tight mb-4 leading-tight">{leader.name}</h4>
+                  <p className="text-[11px] text-slate-500 font-medium leading-relaxed opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-2 group-hover:translate-y-0">
                     {leader.desc}
                   </p>
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-20 flex justify-center">
+            <Link to="/about" className="group flex items-center gap-4 text-[11px] font-black text-slate-900 uppercase tracking-[0.3em] border-b-2 border-slate-900 pb-2 hover:text-[#0096D6] hover:border-[#0096D6] transition-all">
+              Full Board of Governance
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+            </Link>
           </div>
         </div>
       </section>
