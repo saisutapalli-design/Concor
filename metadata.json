@@ -1,0 +1,8 @@
+{
+  "name": "CONCOR Web",
+  "description": "Enterprise-grade logistics SaaS for CONCOR. Features FMLM orchestrator, smart e-Filing, KYCL container tracking, and AI-assisted terminal telemetry.",
+  "requestFramePermissions": [
+    "geolocation",
+    "camera"
+  ]
+}
