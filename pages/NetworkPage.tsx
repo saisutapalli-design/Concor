@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CONCOR_LOGO } from '../constants';
+import { ConcorLogo } from '../constants';
 
 const NetworkPage: React.FC = () => {
   const regions = [
@@ -16,9 +15,10 @@ const NetworkPage: React.FC = () => {
       {/* Mini Nav */}
       <nav className="glass border-b border-gray-100 flex items-center justify-between px-6 py-3 z-50">
         <div className="flex items-center gap-6">
-          <Link to="/" className="scale-50 origin-left hover:scale-[0.52] transition-transform">{CONCOR_LOGO}</Link>
-          <div className="h-6 w-px bg-gray-200"></div>
-          <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[#0096D6]">National Infrastructure Network</span>
+          <Link to="/" className="scale-75 md:scale-90 origin-left transition-transform hover:scale-[0.92]">
+            <ConcorLogo />
+          </Link>
+          <span className="hidden md:block text-[11px] font-black uppercase tracking-[0.2em] text-[#0096D6]">National Infrastructure Network</span>
         </div>
         <div className="flex items-center gap-4">
           <Link to="/login" className="bg-gray-900 text-white px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-black transition-all">Portal Login</Link>
@@ -61,12 +61,12 @@ const NetworkPage: React.FC = () => {
           </div>
         </aside>
 
-        {/* Main Map View - Replaced SVG with an Interactive Google Map as requested */}
+        {/* Main Map View */}
         <main className="flex-1 relative bg-slate-100">
            <iframe 
              title="CONCOR National Hubs"
              className="w-full h-full border-0 grayscale-[0.3] hover:grayscale-0 transition-all duration-1000"
-             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14022.3996556487!2d77.273187!3d28.517196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce6bb37618997%3A0xc4eb789b533668e2!2sCONCOR%20Bhawan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14022.3996556487!2d77.283187!3d28.517196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce6bb37618997%3A0xc4eb789b533668e2!2sCONCOR%20Bhawan!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
              allowFullScreen={true} 
              loading="lazy" 
              referrerPolicy="no-referrer-when-downgrade"

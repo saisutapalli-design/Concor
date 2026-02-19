@@ -6,6 +6,15 @@
   <title>CONCOR - Enterprise Logistics SaaS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <script>
+    // Critical Shim for GitHub Pages deployment
+    // Defines the environment variable globally to prevent white-screen JS errors
+    window.process = {
+      env: {
+        API_KEY: "AIzaSyBIsIeCxlzWh3-YfS_fkemDXtxCnX6PZv8"
+      }
+    };
+  </script>
   <style>
     :root {
       --concor-blue: #0096D6;
@@ -157,7 +166,7 @@
 </head>
 <body>
   <div id="root"></div>
-  <!-- Use a relative path to ensure GitHub Pages resolves correctly in subfolders -->
+  <!-- Relative path for production compatibility -->
   <script type="module" src="./index.tsx"></script>
 </body>
 </html>

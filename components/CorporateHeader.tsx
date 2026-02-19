@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { CONCOR_LOGO } from '../constants';
+import { ConcorLogo } from '../constants';
 
 const CorporateHeader: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +19,7 @@ const CorporateHeader: React.FC = () => {
       <div className="max-w-7xl mx-auto w-full px-4 md:px-8 flex items-center justify-between">
         <div className="flex items-center gap-4 lg:gap-16">
           <Link to="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 shrink-0 scale-90 md:scale-100 origin-left">
-            {CONCOR_LOGO}
+            <ConcorLogo />
           </Link>
           
           {/* Desktop Navigation */}

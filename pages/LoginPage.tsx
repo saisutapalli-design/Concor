@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserRole, User } from '../types';
-import { CONCOR_LOGO } from '../constants';
+import { ConcorLogo } from '../constants';
 
 interface LoginPageProps {
   onLogin: (user: User) => void;
@@ -34,11 +33,9 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
         <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #0096D6 1px, transparent 0)', backgroundSize: '60px 60px' }}></div>
         
         <div className="relative z-10">
-          {/* Enhanced Logo Container for Landing Visibility */}
-          <div className="mb-16 inline-flex items-center justify-center px-10 py-8 bg-white rounded-[2.5rem] border border-white/10 backdrop-blur-md shadow-2xl">
-            <div className="scale-110">
-              {CONCOR_LOGO}
-            </div>
+          {/* Stabilized Logo Container - Removed transformation and blur to stop flickering */}
+          <div className="mb-16 inline-flex items-center justify-center px-10 py-8 bg-white rounded-[2.5rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] border border-white/10">
+            <ConcorLogo />
           </div>
           
           <h2 className="text-6xl font-black tracking-tighter leading-none mb-6">
@@ -66,8 +63,8 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
       {/* Right Side: Login Form */}
       <div className="w-full lg:w-[45%] flex flex-col justify-center px-10 md:px-24 bg-white">
         <div className="lg:hidden mb-12 flex justify-center">
-          <div className="p-4 bg-white rounded-2xl shadow-lg border border-slate-100 scale-90">
-            {CONCOR_LOGO}
+          <div className="p-4 bg-white rounded-2xl shadow-lg border border-slate-100">
+            <ConcorLogo />
           </div>
         </div>
         

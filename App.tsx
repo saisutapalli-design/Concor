@@ -15,7 +15,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import OurServicesPage from './pages/OurServicesPage';
 import TariffsPage from './pages/TariffsPage';
 import InvestorRelationsPage from './pages/InvestorRelationsPage';
-import { CONCOR_LOGO } from './constants';
+import { ConcorLogo } from './constants';
 
 const App: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -45,12 +45,12 @@ const App: React.FC = () => {
       <div className="min-h-screen flex flex-col bg-white selection:bg-[#0096D6]/30">
         <header className="sticky top-0 z-[100] bg-white/95 backdrop-blur-md border-b border-slate-100 px-4 md:px-8 h-20 md:h-24 flex items-center justify-between shrink-0 shadow-sm">
           <div className="flex items-center h-full">
-            <Link to="/dashboard" className="flex items-center transition-transform active:scale-95 group scale-90 md:scale-100 origin-left">
-              {CONCOR_LOGO}
+            <Link to="/dashboard" className="flex items-center transition-transform active:scale-95 group">
+              <ConcorLogo />
             </Link>
           </div>
           
-          <div className="flex items-center gap-2 md:gap-8">
+          <div className="flex items-center gap-4 md:gap-8">
             <nav className="hidden md:flex items-center gap-4">
               <Link to="/settings" className={`transition-all duration-300 w-11 h-11 flex items-center justify-center rounded-2xl ${location.pathname === '/settings' ? 'text-white bg-[#0096D6] shadow-xl shadow-blue-500/20' : 'text-slate-400 bg-slate-50 hover:bg-slate-100 hover:text-[#0096D6]'}`} title="System Configuration">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
@@ -59,8 +59,7 @@ const App: React.FC = () => {
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H2.25" /></svg>
               </button>
             </nav>
-            <div className="hidden md:block h-8 w-px bg-slate-100 mx-2"></div>
-            <Link to="/profile" className="flex items-center gap-3 md:gap-4 pl-0 md:pl-2 group">
+            <Link to="/profile" className="flex items-center gap-3 md:gap-4 group">
               <div className="hidden sm:flex flex-col items-end text-right">
                 <p className="text-xs font-black text-slate-900 leading-none group-hover:text-[#0096D6] transition-colors tracking-tight uppercase">{user?.name || 'OPERATOR.SYS'}</p>
                 <p className="text-[9px] font-black text-slate-400 mt-1.5 uppercase tracking-[0.2em]">L3 PROTOCOL</p>
@@ -70,7 +69,6 @@ const App: React.FC = () => {
               </div>
             </Link>
             
-            {/* Mobile Actions Menu Toggle */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden w-10 h-10 flex items-center justify-center text-slate-400 bg-slate-50 rounded-xl"
@@ -84,7 +82,6 @@ const App: React.FC = () => {
           </div>
         </header>
 
-        {/* Mobile Dropdown for Authenticated User */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-100 animate-in slide-in-from-top-2 p-6 space-y-4">
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-4 text-sm font-black text-slate-600 uppercase tracking-widest py-2">
@@ -103,13 +100,14 @@ const App: React.FC = () => {
         </main>
         
         <footer className="bg-slate-950 pt-16 pb-12 px-6 md:px-8 border-t border-white/5 shrink-0 relative overflow-hidden text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] scale-[2] md:scale-[2.5] pointer-events-none brightness-0 invert flex justify-center h-16 md:h-20">{CONCOR_LOGO}</div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] scale-[2] md:scale-[2.5] pointer-events-none brightness-0 invert flex justify-center h-16 md:h-20">
+            <ConcorLogo />
+          </div>
           <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 relative z-10">
             <div className="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-12 gap-y-3 text-[9px] md:text-[11px] font-black text-slate-500">
               <Link to="/dashboard" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Dashboard</Link>
               <Link to="/profile" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Credentials</Link>
               <Link to="/settings" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Security</Link>
-              <div className="h-4 w-px bg-white/10 hidden md:block"></div>
               <span className="uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-600 text-[8px] md:text-[11px]">SECURE NODE: {location.pathname.replace('/', '').toUpperCase() || 'ROOT'}</span>
             </div>
             <p className="text-[9px] md:text-[10px] font-black text-slate-700 uppercase tracking-[0.2em] md:tracking-[0.3em] leading-relaxed max-w-xs md:max-w-lg">Copyright © 2026 Container Corporation of India Ltd.<br/>Authorized access only. All operational events are logged.</p>
