@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from "@google/genai";
 
@@ -70,7 +71,6 @@ const AIChatbot: React.FC<AIChatbotProps> = ({ context }) => {
     setIsTyping(true);
 
     try {
-      // process.env.API_KEY is shimmed in index.html for static hosting compatibility
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
