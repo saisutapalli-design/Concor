@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import CorporateHeader from '../components/CorporateHeader';
-import { CONCOR_LOGO } from '../constants';
+// Fix: Corrected import name to match the export in constants.tsx
+import { ConcorLogo } from '../constants';
 
 const AboutUsPage: React.FC = () => {
   return (

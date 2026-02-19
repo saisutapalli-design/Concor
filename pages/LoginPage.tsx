@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserRole, User } from '../types';
@@ -30,11 +31,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
     <div className="min-h-screen flex bg-slate-50 font-sans overflow-hidden">
       {/* Left Side: Professional Enterprise Context */}
       <div className="hidden lg:flex w-[55%] bg-slate-900 relative flex-col justify-between p-20 text-white">
-        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #0096D6 1px, transparent 0)', backgroundSize: '60px 60px' }}></div>
+        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #0096D6 1px, transparent 0)', backgroundSize: '48px 48px' }}></div>
         
         <div className="relative z-10">
-          {/* Stabilized Logo Container - Removed transformation and blur to stop flickering */}
-          <div className="mb-16 inline-flex items-center justify-center px-10 py-8 bg-white rounded-[2.5rem] shadow-[0_35px_60px_-15px_rgba(0,0,0,0.3)] border border-white/10">
+          <div className="mb-16 inline-flex bg-white p-6 rounded-3xl border border-slate-700/50 shadow-2xl">
             <ConcorLogo />
           </div>
           
@@ -95,7 +95,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block">Username / Corporate ID</label>
+                <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1 block">Corporate ID</label>
                 <input 
                   type="email" 
                   value={username}
@@ -116,15 +116,32 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-               <button 
-                 type="button"
-                 onClick={() => setIsDigitalSigned(!isDigitalSigned)}
-                 className={`w-12 h-6 rounded-full transition-all relative ${isDigitalSigned ? 'bg-[#0096D6]' : 'bg-slate-200'}`}
-               >
-                 <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all ${isDigitalSigned ? 'right-1' : 'left-1'}`}></div>
-               </button>
-               <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Apply Digital Signature (DSC)</span>
+            {/* Enhanced Security Section: Digital Signature */}
+            <div className={`p-5 rounded-2xl border transition-all duration-300 ${isDigitalSigned ? 'bg-blue-50/50 border-blue-200' : 'bg-slate-50 border-slate-100'}`}>
+              <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center gap-3">
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${isDigitalSigned ? 'bg-[#0096D6] text-white shadow-lg' : 'bg-slate-200 text-slate-400'}`}>
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25-2.25v6.75a2.25 2.25 0 002.25 2.25z" /></svg>
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest">Digital Signature (DSC)</span>
+                    <p className="text-[8px] font-bold text-slate-400 uppercase tracking-tighter">Enable secure session signing</p>
+                  </div>
+                </div>
+                <button 
+                  type="button"
+                  onClick={() => setIsDigitalSigned(!isDigitalSigned)}
+                  className={`w-12 h-6 rounded-full transition-all relative ring-4 ring-transparent active:scale-95 ${isDigitalSigned ? 'bg-[#0096D6] ring-blue-100' : 'bg-slate-300'}`}
+                >
+                  <div className={`absolute top-1 w-4 h-4 bg-white rounded-full shadow-sm transition-all ${isDigitalSigned ? 'right-1' : 'left-1'}`}></div>
+                </button>
+              </div>
+              {isDigitalSigned && (
+                <div className="flex items-center gap-2 mt-3 animate-in fade-in slide-in-from-top-1 duration-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
+                  <span className="text-[8px] font-black text-[#0096D6] uppercase tracking-widest">Protocol Active: DSC-256-SIGN</span>
+                </div>
+              )}
             </div>
 
             <button type="submit" className="btn-prominent w-full h-14 shadow-blue-500/20">

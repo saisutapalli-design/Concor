@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ConcorLogo } from '../constants';
@@ -10,12 +11,11 @@ const CorporateHeader: React.FC = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Our Services', path: '/services' },
     { name: 'Tariffs', path: '/tariffs' },
-    { name: 'Investors', path: '/investors' },
-    { name: 'Network', path: '/network' }
+    { name: 'Investors', path: '/investors' }
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] bg-white border-b border-slate-100 shadow-sm h-20 md:h-24 flex items-center">
+    <nav className="fixed top-0 left-0 right-0 z-[100] bg-slate-50/95 backdrop-blur-md border-b border-slate-200 shadow-sm h-20 md:h-24 flex items-center">
       <div className="max-w-7xl mx-auto w-full px-4 md:px-8 flex items-center justify-between">
         <div className="flex items-center gap-4 lg:gap-16">
           <Link to="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 shrink-0 scale-90 md:scale-100 origin-left">
@@ -29,7 +29,7 @@ const CorporateHeader: React.FC = () => {
                 key={link.name} 
                 to={link.path} 
                 className={`text-[11px] font-black uppercase tracking-[0.25em] transition-all whitespace-nowrap py-2 relative group ${
-                  location.pathname === link.path ? 'text-[#0096D6]' : 'text-slate-400 hover:text-[#0096D6]'
+                  location.pathname === link.path ? 'text-[#0096D6]' : 'text-slate-500 hover:text-[#0096D6]'
                 }`}
               >
                 {link.name}
@@ -65,7 +65,7 @@ const CorporateHeader: React.FC = () => {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 top-20 md:top-24 bg-white z-[90] lg:hidden animate-in fade-in slide-in-from-top-4">
+        <div className="fixed inset-0 top-20 md:top-24 bg-slate-50 z-[90] lg:hidden animate-in fade-in slide-in-from-top-4">
           <div className="p-8 space-y-6">
             {navLinks.map((link) => (
               <Link 
@@ -82,7 +82,7 @@ const CorporateHeader: React.FC = () => {
           </div>
           <div className="absolute bottom-10 left-8 right-8 text-center">
             <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Enterprise Node Access</p>
-            <div className="h-px bg-slate-100 w-full mb-6"></div>
+            <div className="h-px bg-slate-200 w-full mb-6"></div>
           </div>
         </div>
       )}

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom';
 import { User } from './types';
@@ -15,6 +16,7 @@ import AboutUsPage from './pages/AboutUsPage';
 import OurServicesPage from './pages/OurServicesPage';
 import TariffsPage from './pages/TariffsPage';
 import InvestorRelationsPage from './pages/InvestorRelationsPage';
+import ContactUsPage from './pages/ContactUsPage';
 import { ConcorLogo } from './constants';
 
 const App: React.FC = () => {
@@ -36,8 +38,8 @@ const App: React.FC = () => {
   const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const location = useLocation();
 
-    // Landing and Public pages handle their own responsive headers
-    const isPublicPage = ['/', '/login', '/network', '/about', '/services', '/tariffs', '/investors'].includes(location.pathname);
+    // Pages that don't need the internal app header/sidebar
+    const isPublicPage = ['/', '/login', '/network', '/about', '/services', '/tariffs', '/investors', '/contact'].includes(location.pathname);
     
     if (isPublicPage) return <>{children}</>;
 
@@ -85,11 +87,9 @@ const App: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white border-b border-slate-100 animate-in slide-in-from-top-2 p-6 space-y-4">
             <Link to="/settings" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-4 text-sm font-black text-slate-600 uppercase tracking-widest py-2">
-               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                Security Config
             </Link>
             <button onClick={handleLogout} className="flex items-center gap-4 text-sm font-black text-rose-600 uppercase tracking-widest py-2">
-               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5"><path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l3 3m0 0l-3 3m3-3H2.25" /></svg>
                Terminate Session
             </button>
           </div>
@@ -101,16 +101,15 @@ const App: React.FC = () => {
         
         <footer className="bg-slate-950 pt-16 pb-12 px-6 md:px-8 border-t border-white/5 shrink-0 relative overflow-hidden text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] scale-[2] md:scale-[2.5] pointer-events-none brightness-0 invert flex justify-center h-16 md:h-20">
-            <ConcorLogo />
+            <ConcorLogo light />
           </div>
           <div className="max-w-7xl mx-auto flex flex-col items-center gap-8 relative z-10">
             <div className="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-12 gap-y-3 text-[9px] md:text-[11px] font-black text-slate-500">
               <Link to="/dashboard" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Dashboard</Link>
               <Link to="/profile" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Credentials</Link>
               <Link to="/settings" className="hover:text-[#0096D6] transition-colors uppercase tracking-[0.2em] md:tracking-[0.3em]">Security</Link>
-              <span className="uppercase tracking-[0.2em] md:tracking-[0.3em] text-slate-600 text-[8px] md:text-[11px]">SECURE NODE: {location.pathname.replace('/', '').toUpperCase() || 'ROOT'}</span>
             </div>
-            <p className="text-[9px] md:text-[10px] font-black text-slate-700 uppercase tracking-[0.2em] md:tracking-[0.3em] leading-relaxed max-w-xs md:max-w-lg">Copyright © 2026 Container Corporation of India Ltd.<br/>Authorized access only. All operational events are logged.</p>
+            <p className="text-[9px] md:text-[10px] font-black text-slate-700 uppercase tracking-[0.2em] md:tracking-[0.3em] leading-relaxed max-w-xs md:max-w-lg">Copyright © 2026 Container Corporation of India Ltd.<br/>Authorized access only.</p>
           </div>
         </footer>
       </div>
@@ -127,6 +126,7 @@ const App: React.FC = () => {
           <Route path="/services" element={<OurServicesPage />} />
           <Route path="/tariffs" element={<TariffsPage />} />
           <Route path="/investors" element={<InvestorRelationsPage />} />
+          <Route path="/contact" element={<ContactUsPage />} />
           <Route path="/dashboard" element={isAuthenticated ? <UnifiedDashboard /> : <Navigate to="/login" />} />
           <Route path="/kycl" element={isAuthenticated ? <KYCLPage /> : <Navigate to="/login" />} />
           <Route path="/logistics" element={isAuthenticated ? <ELogisticsPage user={user!} /> : <Navigate to="/login" />} />
